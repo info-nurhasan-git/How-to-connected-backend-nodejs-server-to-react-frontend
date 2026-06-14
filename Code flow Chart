@@ -1,0 +1,19 @@
+App() Start
+   ↓
+useState()
+   ↓
+JSX Return
+   ↓
+Screen Render
+   ↓
+useEffect()
+   ↓
+Axios Request
+   ↓
+Backend Response
+   ↓
+setMessage()
+   ↓
+Re-render
+   ↓
+Updated UI
