@@ -1,0 +1,87 @@
+React + Axios + Backend Flow (Step by Step)
+
+1. App Component Starts
+   ↓
+2. useState("") creates state
+   message = ""
+   ↓
+3. React renders the UI
+   <h1></h1>
+   (Nothing is displayed because message is empty)
+   ↓
+4. useEffect() runs after the first render
+   ↓
+5. axios.get("http://localhost:5000/api/message")
+   sends a request to the backend
+   ↓
+6. Backend receives the request
+   ↓
+7. Backend sends a JSON response
+
+   {
+     "message": "Hello from Backend!"
+   }
+
+   ↓
+8. .then() callback executes
+   ↓
+9. setMessage(response.data.message)
+   updates the state
+
+   message = "Hello from Backend!"
+   ↓
+10. React detects state change
+    ↓
+11. React re-renders the component
+    ↓
+12. Updated UI is displayed
+
+    <h1>Hello from Backend!</h1>
+
+
+Code Flow Example
+
+console.log("Step 1");
+
+axios.get("/api/message")
+  .then((response) => {
+    console.log("Step 3");
+  });
+
+console.log("Step 2");
+
+Output:
+Step 1
+Step 2
+Step 3
+
+Reason:
+- axios.get() is asynchronous.
+- JavaScript does not wait for the API response.
+- It continues executing the next line.
+- When the response arrives, the .then() callback runs.
+
+
+Complete Flow
+
+Frontend (React)
+      ↓
+useEffect()
+      ↓
+axios.get()
+      ↓
+HTTP Request
+      ↓
+Backend Server
+      ↓
+Database (optional)
+      ↓
+Backend Response (JSON)
+      ↓
+.then() / await
+      ↓
+setState()
+      ↓
+React Re-render
+      ↓
+Updated UI
